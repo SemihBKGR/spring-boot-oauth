@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Items</title>
+</head>
+<body>
+<div>
+    <h3>Items</h3>
+    <ul>
+        <li th:each="item: ${items}">
+            <p th:text="'Id: '+${item.id}"></p>
+            <p th:text="'Name: '+${item.name}"></p>
+            <p th:text="'Owner: '+${item.owner}"></p>
+        </li>
+    </ul>
+</div>
+<div>
+    <h3>Add</h3>
+    <form action="/item" method="post">
+        <div>
+            <label for="name">Name: </label>
+            <input id="name" name="name" type="text">
+        </div>
+        <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden"/>
+        <button type="submit">Add</button>
+    </form>
+</div>
+</body>
+</html>

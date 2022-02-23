@@ -1,0 +1,33 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          item-client-oidc:
+            provider: spring
+            client-id: item-client
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://127.0.0.1:9000/login/oauth2/code/{registrationId}"
+            scope: openid
+            client-name: item-client-oidc
+          item-client-authorization-code:
+            provider: spring
+            client-id: item-client
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://127.0.0.1:9000/authorized"
+            scope: item.read
+            client-name: item-client-authorization-code
+          item-client-client-credentials:
+            provider: spring
+            client-id: item-client
+            client-secret: secret
+            authorization-grant-type: client_credentials
+            scope: item.read
+            client-name: item-client-client-credentials
+        provider:
+          spring:
+            issuer-uri: http://localhost:9999
+server:
+  port: 9000
